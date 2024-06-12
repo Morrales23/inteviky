@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+
+    <title>Empleados</title>
+</head>
+<body>
+    <h1>Lista de Proveedores</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Contacto</th>
+                <th>Dia Pedido</th>
+                <th>Dia entrega</th>
+                <th>Total</th>
+                <th>Producto entregado</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedores in proveedores %}
+                <tr>
+                    <td>{{ proveedores[0] }}</td>
+                    <td>{{ proveedores[1] }}</td>
+                    <td>{{ proveedores[2] }}</td>
+                    <td>{{ proveedores[3] }}</td>
+                    <td>{{ proveedores[4] }}</td>
+                    <td>{{ proveedores[5] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Bienvenido, {{ session['user_role'] }}!</h1>
+    <ul>
+        <li><a href="/usuarios">Usuarios</a></li>
+        <li><a href="/productos">Productos</a></li>
+        <li><a href="/categorias">Categorías</a></li>
+        <li><a href="/proveedores">Proveedores</a></li>
+    </ul>
+</body>
+</html>
