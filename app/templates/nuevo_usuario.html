@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Usuario{% endblock %}
+
+{% block content %}
+    <h1>Nuevo Usuario</h1>
+    <form action="{{ url_for('nuevo_usuario') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" required>
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol" required>
+            <option value="cajero">Cajero</option>
+            <option value="administrador">Administrador</option>
+        </select>
+
+        <input type="submit" value="Crear">
+    </form>
+    <a href="{{ url_for('usuarios') }}">Volver a Usuarios</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Producto{% endblock %}
+
+{% block content %}
+    <h1>Nuevo Producto</h1>
+    <form action="{{ url_for('nuevo_producto') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" required>
+        <br>
+        <label for="stock">Stock:</label>
+        <input type="text" id="stock" name="stock" required>
+        <br>
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" name="precio" required>
+        <br>
+        <label for="id_categoria">Categoría:</label>
+        <select id="id_categoria" name="id_categoria" required>
+            {% for categoria in categorias %}
+                <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Agregar Producto">
+    </form>
+
+    <a href="{{ url_for('productos') }}">Volver a la lista de productos</a>
+{% endblock %}

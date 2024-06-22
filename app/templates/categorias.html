@@ -1,32 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/styles.css">
+{% extends 'base.html' %}
 
-    <title>Productos</title>
-</head>
-<body>
-    <h1>Lista de Productos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-               
+{% block title %}Categorías{% endblock %}
 
-            </tr>
-        </thead>
-        <tbody>
-            {% for categorias in categorias %}
+{% block content %}
+    <div class="container">
+        <h1>Categorías</h1>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ categorias[0] }}</td>
-                    <td>{{ categorias[1] }}</td>
-
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                    <tr>
+                        <td>{{ categoria[0] }}</td>
+                        <td>{{ categoria[1] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_categoria', id=categoria[0]) }}" class="edit-button">Editar</a>
+                            <form action="{{ url_for('eliminar_categoria', id=categoria[0]) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="delete-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('nueva_categoria') }}" class="button">Nueva Categoría</a>
+    </div>
+{% endblock %}

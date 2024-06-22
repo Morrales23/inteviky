@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nombre de tu aplicación</title>
+    <!-- Agrega enlaces a tus estilos CSS y otros recursos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('usuarios') }}">Usuarios</a></li>
+            <li><a href="{{ url_for('productos') }}">Productos</a></li>
+            <li><a href="{{ url_for('categorias') }}">Categorías</a></li>
+            <li><a href="{{ url_for('proveedores') }}">Proveedores</a></li>
+            {% if 'user_id' in session %}
+                <li><a href="{{ url_for('logout') }}">Cerrar Sesión </a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <!-- Contenido específico de cada página se insertará aquí usando bloques -->
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/styles.css">
+{% extends 'base.html' %}
 
-    <title>Empleados</title>
-</head>
-<body>
-    <h1>Lista de Usuarios</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Contraseña</th>
-                <th>Rol</th>
+{% block title %}Usuarios{% endblock %}
 
-            </tr>
-        </thead>
-        <tbody>
-            {% for usuarios in usuarios %}
+{% block content %}
+    <div class="container">
+        <h1>Usuarios</h1>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ usuarios[0] }}</td>
-                    <td>{{ usuarios[1] }}</td>
-                    <td>{{ usuarios[2] }}</td>
-                    <td>{{ usuarios[3] }}</td>
-
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario[0] }}</td>
+                        <td>{{ usuario[1] }}</td>
+                        <td>{{ usuario[2] }}</td>
+                        <td>{{ usuario[3] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_usuario', id=usuario[0]) }}" class="edit-button">Editar</a>
+                            <form action="{{ url_for('eliminar_usuario', id=usuario[0]) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="delete-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('nuevo_usuario') }}" class="button">Nuevo Usuario</a>
+    </div>
+{% endblock %}

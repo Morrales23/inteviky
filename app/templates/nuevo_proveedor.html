@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Proveedor{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Crear Nuevo Proveedor</h1>
+        <form action="{{ url_for('nuevo_proveedor') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+          
+            <label for="contacto">Contacto:</label>
+            <input type="num" id="contacto" name="contacto" required><br><br>
+            
+            <label for="dia_pedido">Día Pedido:</label>
+            <input type="date" id="dia_pedido" name="dia_pedido" required><br><br>
+            
+            <label for="dia_entrega">Día Entrega:</label>
+            <input type="date" id="dia_entrega" name="dia_entrega" required><br><br>
+            
+            <label for="total_pagado">Total Pagado:</label>
+            <input type="text" id="total_pagado" name="total_pagado" required><br><br>
+            
+            <label for="id_producto">ID Producto:</label>
+            <input type="text" id="id_producto" name="id_producto" required><br><br>
+            
+            <button type="submit">Crear Proveedor</button>
+        </form>
+    </div>
+{% endblock %}

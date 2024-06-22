@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Proveedor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Editar Proveedor{% endblock %}
+
+{% block content %}
     <h1>Editar Proveedor</h1>
-    <form method="POST">
+    <form action="{{ url_for('editar_proveedor', id=proveedor[0]) }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label for="contacto">Contacto:</label>
-        <input type="text" id="contacto" name="contacto" value="{{ proveedor[1] }}" required><br>
+        <input type="text" id="contacto" name="contacto" value="{{ proveedor[1] }}" required>
 
-        <label for="dia_pedido">Día Pedido:</label>
-        <input type="date" id="dia_pedido" name="dia_pedido" value="{{ proveedor[2] }}" required><br>
+        <label for="dia_pedido">Día del Pedido:</label>
+        <input type="date" id="dia_pedido" name="dia_pedido" value="{{ proveedor[2] }}" required>
 
-        <label for="dia_entrega">Día Entrega:</label>
-        <input type="date" id="dia_entrega" name="dia_entrega" value="{{ proveedor[3] }}" required><br>
+        <label for="dia_entrega">Día de Entrega:</label>
+        <input type="date" id="dia_entrega" name="dia_entrega" value="{{ proveedor[3] }}" required>
 
         <label for="total_pagado">Total Pagado:</label>
-        <input type="number" step="0.01" id="total_pagado" name="total_pagado" value="{{ proveedor[4] }}" required><br>
+        <input type="number" id="total_pagado" name="total_pagado" step="0.01" value="{{ proveedor[4] }}" required>
 
         <label for="id_producto">ID Producto:</label>
-        <input type="number" id="id_producto" name="id_producto" value="{{ proveedor[5] }}" required><br>
+        <input type="number" id="id_producto" name="id_producto" value="{{ proveedor[5] }}" required>
 
-        <button type="submit">Guardar</button>
+        <input type="submit" value="Actualizar">
     </form>
-    <a href="{{ url_for('proveedores') }}">Cancelar</a>
-</body>
-</html>
+    <a href="{{ url_for('proveedores') }}">Volver a Proveedores</a>
+{% endblock %}

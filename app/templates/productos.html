@@ -1,32 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Productos</title>
-</head>
-<body>
-    <h1>Lista de Productos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Marca</th>
-                <th>Stock</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in productos %}
-            <tr>
-                <td>{{ producto[0] }}</td>
-                <td>{{ producto[1] }}</td>
-                <td>{{ producto[2] }}</td>
-                <td>{{ producto[3] }}</td>
-                <td>{{ producto[4] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Lista de Productos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Producto</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto[0] }}</td>
+                        <td>{{ producto[1] }}</td>
+                        <td>{{ producto[2] }}</td>
+                        <td>{{ producto[3] }}</td>
+                        <td>{{ producto[4] }}</td>
+                        <td>{{ producto[5] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_producto', id=producto[0]) }}" class="edit-button">Editar</a>
+                            <form action="{{ url_for('eliminar_producto', id=producto[0]) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" onclick="return confirm('seguro?')" class="delete-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('nuevo_producto') }}" class="button">Nuevo Producto</a>
+    </div>
+{% endblock %}

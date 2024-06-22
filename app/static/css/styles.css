@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.container_login {
+    background-color: #dbaf69;
+    display: inline-block;
+    padding: 50px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    width: 100px;
+    margin-right: 10px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: calc(100% - 120px);
+    padding: 0.5em;
+    border: 1.1px solid #0e0c0c;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #61c974;
+    color: white;
+    padding: 0.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="submit"]:hover {
+    background-color: #549673;
+}
+
+p {
+    color: red;
+    font-size: 0.9em;
+}
+
+.container {
+    max-width: 800px;
+    margin: 10px; 
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #080606;
+}
+
+table th {
+    background-color: #83c258;
+    color: #0a0202;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #65ac65;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #75ac75;
+}
+
+.delete-button {
+    background-color: #a05454; 
+    color: #ffffff; 
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.edit-button {
+    background-color: #65ac65; 
+    color: #ffffff; 
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar {
+    background-color: #775b5b;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline-block; 
+    margin-right: 10px; 
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px; 
+}
+
+.navbar ul li a:hover {
+    background-color: #b9b0b0; 
+}

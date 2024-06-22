@@ -1,38 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/styles.css">
+{% extends 'base.html' %}
 
-    <title>Empleados</title>
-</head>
-<body>
-    <h1>Lista de Proveedores</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Contacto</th>
-                <th>Dia Pedido</th>
-                <th>Dia entrega</th>
-                <th>Total</th>
-                <th>Producto entregado</th>
+{% block title %}Proveedores{% endblock %}
 
-            </tr>
-        </thead>
-        <tbody>
-            {% for proveedores in proveedores %}
+{% block content %}
+    <div class="container">
+        <h1>Proveedores</h1>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ proveedores[0] }}</td>
-                    <td>{{ proveedores[1] }}</td>
-                    <td>{{ proveedores[2] }}</td>
-                    <td>{{ proveedores[3] }}</td>
-                    <td>{{ proveedores[4] }}</td>
-                    <td>{{ proveedores[5] }}</td>
+                    <th>ID</th>
+                    <th>Contacto</th>
+                    <th>Día Pedido</th>
+                    <th>Día Entrega</th>
+                    <th>Total Pagado</th>
+                    <th>ID Producto</th>
+                    <th>Acciones</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                    <tr>
+                        <td>{{ proveedor[0] }}</td>
+                        <td>{{ proveedor[1] }}</td>
+                        <td>{{ proveedor[2] }}</td>
+                        <td>{{ proveedor[3] }}</td>
+                        <td>{{ proveedor[4] }}</td>
+                        <td>{{ proveedor[5] }}</td>
+                        <td>
+                            <a href="{{ url_for('editar_proveedor', id=proveedor[0]) }}" class="edit-button">Editar</a>
+                            <form action="{{ url_for('eliminar_proveedor', id=proveedor[0]) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="delete-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('nuevo_proveedor') }}" class="button">Nuevo Proveedor</a>
+    </div>
+{% endblock %}
